@@ -22,7 +22,7 @@ class Book(Base):
     publisher = relationship(Publisher, backref="book")
 
     def __str__(self):
-        return f'Книга: {self.title}'
+        return f'{self.title}'
 
 class Shop(Base):
     __tablename__ = "shop"
