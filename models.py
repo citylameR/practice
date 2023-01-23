@@ -58,7 +58,7 @@ class Sale(Base):
     stock = relationship(Stock, backref="sale")
 
     def __str__(self):
-        return f'{self.price}р. | {self.date_sale}'
+        return f'{self.price} {self.date_sale}'
 
 def create_tables(engine):
     Base.metadata.drop_all(engine)

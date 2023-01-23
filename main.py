@@ -39,16 +39,16 @@ session.commit()
 id = input('Введите фамилию либо id писателя: ')
 
 if len(id) >= 3:
-    result = session.query(Book, Shop, Sale).filter(Publisher.name == id).filter(
+    result = session.query(Book.title, Shop.name, Sale.price, Sale.date_sale).filter(Publisher.name == id).filter(
         Publisher.id == Book.id_publisher).filter(Book.id == Stock.id_book).filter(Stock.id_shop == Shop.id).filter(
         Stock.id == Sale.id_stock).all()
     for r in result:
-        print(f'{r[0]} | {r[1]} | {r[2]}')
+        print(f'{r[0]} | {r[1]} | {r[2]}р. | {r[3]}')
 else:
-    result = session.query(Book, Shop, Sale).filter(Publisher.id == id).filter(
+    result = session.query(Book.title, Shop.name, Sale.price, Sale.date_sale).filter(Publisher.id == id).filter(
         Publisher.id == Book.id_publisher).filter(Book.id == Stock.id_book).filter(Stock.id_shop == Shop.id).filter(
         Stock.id == Sale.id_stock).all()
     for r in result:
-        print(f'{r[0]} | {r[1]} | {r[2]}')
+        print(f'{r[0]} | {r[1]} | {r[2]}р. | {r[3]}')
 
 session.close()
